@@ -21,34 +21,38 @@ export function Cart(){
 
             {cart.map( (item) => (
                 <section key={item.id} className="flex items-center justify-between border-b-2 border-gray-300">
-                <img 
-                    src={item.cover} 
-                    alt={item.title}
-                    className="w-28"
-                />
-                
-                <strong>Preço: {item.price}</strong>
+                    <img 
+                        src={item.cover} 
+                        alt={item.title}
+                        className="w-28"
+                    />
+                    
+                    <strong>Preço: {item.price}</strong>
 
-                <div className="flex items-center justify-center gap-3">
-                    <button 
-                        onClick={ () => removeItemCart(item)}
-                        className="bg-slate-600 px-2 rounded text-white font-medium flex items-center justify-center"
-                    >
-                        -
-                    </button>
-                    {item.amount}
-                    <button 
-                        onClick={ () => addItemCart(item)}                        
-                        className="bg-slate-600 px-2 rounded text-white font-medium flex items-center justify-center"
-                    >
-                        +
-                    </button>
-                </div>
-                <strong className="float-right">Subtotal: {item.total.toLocaleString("pt-BR",{
-                    style: "currency",
-                    currency: "BRL"
-                })}</strong>
-            </section>
+                    <div className="flex items-center justify-center gap-3">
+                        <button 
+                            onClick={ () => removeItemCart(item)}
+                            className="bg-slate-600 px-2 rounded text-white font-medium flex items-center justify-center"
+                        >
+                            -
+                        </button>
+
+                        {item.amount}
+                        
+                        <button 
+                            onClick={ () => addItemCart(item)}                        
+                            className="bg-slate-600 px-2 rounded text-white font-medium flex items-center justify-center"
+                        >
+                            +
+                        </button>
+                    </div>
+                    <strong className="float-right">
+                        Subtotal: {item.total.toLocaleString("pt-BR",{
+                        style: "currency",
+                        currency: "BRL"
+                    })}
+                    </strong>
+                </section>
             ))}
 
             {cart.length !== 0 && <p className="font-bold mt-4">Total: {total} </p>}
